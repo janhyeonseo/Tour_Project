@@ -5,11 +5,13 @@ import lombok.Data;
 @Data
 public class EventVO {
 	private int id;
-	private String name;
-	private String open;
+	private String ename;
+	private String status;
 	private String etc;
 	private String address;
-	private String eventday;
-	private String notion;
-	private String image;
+	private String detailaddress;
+	private String eday;
+	private String enotion;
+	private String eimage;
+	private String homepage;
 }

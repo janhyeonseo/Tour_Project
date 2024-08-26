@@ -1,51 +1,124 @@
 @charset "EUC-KR";
-		body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
-        table {
-            border-collapse: collapse;
-            width: 600px;
-            margin: 20px auto;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        }
-        th, td {
-            padding: 10px;
-            text-align: center;
-            border: 1px solid #ccc;
-        }
-        th {
-            background-color: #eefadc;
-            font-weight: bold;
-        }
-        tr:hover {
-            background-color: #d6dbce; /* 행에 마우스를 올렸을 때 색상 변경 */
-        }
-        input[type=text], input[type=submit], input[type=reset], input[type=button], input[type=number], button {
-            padding: 5px;
-            margin: 5px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            text-align: center;
-        }
-        input[type=submit], input[type=reset], input[type=button], button {
-            background-color: #88a65d;
-            color: white;
-            cursor: pointer;
-            padding: 5px 12px;
-        }
-        input[type=submit]:hover, input[type=reset]:hover, input[type=button]:hover {
-            background-color: #6b8e23; /* 버튼에 마우스를 올렸을 때 색상을 진하게 변경 */
-        }
-        .left-align {
-            text-align: left;
-        }
-        .rigth-align {
-            text-align: right;
-        }
-        .high-score {
-		    background-color: rgb(244, 255, 206);
-		}
-	        
-         
+
+	body {
+		font-family: Arial, sans-serif;
+		text-align: center;
+	}
+	
+	table {
+		border-collapse: collapse;
+		width: 600px;
+		margin: 20px auto;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+	}
+	
+	th, td {
+		padding: 10px;
+		text-align: center;
+		border: 1px solid #ccc;
+	}
+	
+	th {
+		background-color: #eefadc;
+		font-weight: bold;
+	}
+	
+	tr:hover {
+		background-color: #d6dbce; /* 행에 마우스를 올렸을 때 색상 변경 */
+	}
+	
+	input[type=text], input[type=submit], input[type=reset], input[type=button],
+		input[type=number], button {
+		padding: 5px;
+		margin: 5px 0;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		box-sizing: border-box;
+		text-align: center;
+	}
+	
+	input[type=submit], input[type=reset], input[type=button], button {
+		background-color: #88a65d;
+		color: white;
+		cursor: pointer;
+		padding: 5px 12px;
+	}
+	
+	input[type=submit]:hover, input[type=reset]:hover, input[type=button]:hover
+		{
+		background-color: #6b8e23; /* 버튼에 마우스를 올렸을 때 색상을 진하게 변경 */
+	}
+	
+	.left-align {
+		text-align: left;
+	}
+	
+	.rigth-align {
+		text-align: right;
+	}
+	
+	.high-score {
+		background-color: rgb(244, 255, 206);
+	}
+	
+	/* 이벤트 페이지 */
+	.event-info-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr); /* 2개의 동일한 너비 컬럼 */
+		gap: 1px 5px; /* 행과 열 사이의 간격 */
+		width: 700px; /* 전체 너비 사용 */
+		margin: 0 auto;
+		
+	}
+	
+	.event-info-item {
+		display: flex;
+		align-items: center; /* 수직 중앙 정렬 */
+		justify-content: 10px; /* 요소들 사이에 공간 분배 */
+	}
+	
+	.event-info-label {
+		width: 70px;
+		text-align:left;
+		margin-right: 10px; /* 레이블과 값 사이 간격 설정 */
+	}
+	
+	.details-container {
+		text-align: center;
+		margin: 0 auto;
+		max-width: 700px;
+	}
+	
+	.details-container h3 {
+		text-align: left;
+	}
+	
+	.details-container hr {
+		border: 1px solid #ddd;
+		width: 100%;
+		margin: 5px 0 20px 0;
+	}
+	
+	.details-container p {
+		word-wrap: break-word;
+		text-align: left;
+	}
+	
+	.title-text {
+		font-size: 30px;
+		font-weight: bold;
+		color: rgb(53, 53, 53);
+	}
+	
+	.day-text {
+		font-size: 15px;
+		color: rgb(79, 79, 79);
+		margin-bottom: 15px;
+	}
+	
+	.etc-text {
+		font-size: 25px;
+		font-weight: bold;
+		color: rgb(53, 53, 53);
+	}
+	

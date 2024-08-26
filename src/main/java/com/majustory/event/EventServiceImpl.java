@@ -21,4 +21,10 @@ public class EventServiceImpl implements EventService{
 		// TODO Auto-generated method stub
 		return dao.list(vo);
 	}
+
+	@Override
+	public EventVO Detail(EventVO vo) {
+		// TODO Auto-generated method stub
+		return dao.Detail(vo);
+	}
 }

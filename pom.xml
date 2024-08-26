@@ -79,7 +79,7 @@
 		</dependency>
 		
 		<!-- security 설정 -->
-		
+		<!--
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
@@ -95,7 +95,7 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
+		-->
 	</dependencies>
 
 	<build>

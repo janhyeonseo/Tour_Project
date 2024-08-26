@@ -6,25 +6,29 @@
 		<br>
 
 		<div align="center">
-			<h2>상품 목록 보기</h2>
+			<h2>행사/이벤트 목록</h2>
 		</div>
 		<div align="center">
 
 
-			<table border=1 >
-				<tr align="center">
-					<td>상품번호</td>
-					<td>상품이미지</td>
-					<td>상품이름</td>
-					<td>상품가격</td>
-					<td>상품사진</td>
-					<td>날짜</td>
-					<td>조회수</td>
-				</tr>
-
-				<tr th:each="m, mStat: ${li} " align="center">
-					
-				</tr>
+			<table>
+				<th:block th:each="m, mStat: ${li} ">
+					<tr>
+						<td rowspan=4>
+						<img th:src="${m.eimage}" width=120 height=150 />
+						</td>
+					</tr>
+					<tr>
+						<td><a th:href="@{/event/eventDetail(ename=${m.ename})}"
+							 th:text="${m.ename}"></a></td>
+					</tr>
+					<tr>
+						<td th:text="${m.eday}" />
+					</tr>
+					<tr>
+						<td th:text="${m.etc}" />
+					</tr>
+				</th:block>
 			</table>
 
 		</div>

@@ -1,0 +1,55 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<div th:replace="~{include/top}"></div>
+
+	<section>
+		<br>
+		<div align="center" class="title-text">
+			[[${m.ename}]]
+		</div>
+		<div align="center" class="day-text">
+			[[${m.address}]] | [[${m.eday}]] 
+		</div>
+		<div align="center" class="etc-text">
+			[[${m.etc}]]
+		</div>
+		<br>
+		
+		<div align="center">
+			<hr  width=700>
+			<img th:src="${m.eimage}" width="400" height="520" />
+		</div>
+
+		<div class="details-container">
+			<h3>상세정보</h3>
+			<hr>
+			<p th:text="${m.enotion}"></p>
+			<hr>
+		</div>
+
+		<div class="event-info-grid">
+			<div class="event-info-item">
+				<strong class="event-info-label">시작일</strong> 
+				<span>[[${m.eday.substring(0,11)}]]</span>
+			</div>
+			<div class="event-info-item">
+				<strong class="event-info-label">종료일</strong> 
+				<span>[[${m.eday.substring(15,26)}]]</span>
+			</div>
+			<div class="event-info-item">
+				<strong class="event-info-label">홈페이지</strong> 
+				<span th:text="${m.homepage}"></span>
+			</div>
+			<div class="event-info-item">
+				<strong class="event-info-label">상세주소</strong> 
+				<span th:text="${m.detailaddress}"></span>
+			</div>
+		</div>
+		<br><br><br>
+
+	</section>
+
+	<div th:replace="~{include/bottom::footer}"></div>
+</body>
+</html>

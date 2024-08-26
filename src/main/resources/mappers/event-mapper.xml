@@ -8,6 +8,10 @@
 	    select * from event_info
 	  ]]>
 	</select>
+	
+	<select id="Detail" resultType="com.majustory.event.EventVO">
+	    select * from event_info where  ename = #{ename}
+	</select>
 
 
 </mapper>
