@@ -14,11 +14,30 @@
 		<div align="center" class="etc-text">
 			[[${m.etc}]]
 		</div>
-		<br>
+		<div> </div><div> </div>
 		
-		<div align="center">
-			<hr  width=700>
-			<img th:src="${m.eimage}" width="400" height="520" />
+		<div>
+			<hr width=700>
+			<form action="/event/eventcart">
+				<table>
+					<tr>
+						<td rowspan=4 >
+						<img th:src="${m.eimage}" width="200" height="300" />
+						</td>
+					</tr>
+					<tr>
+						<td th:text="${m.ename}" class="detail-name-text"/>
+					</tr>
+					<tr>
+						<td th:text="${m.price}" class="detail-price-text"/>
+					</tr>
+					<tr>
+						<td>
+						<input type=submit value="장바구니 담기" class="detail-cart-text" />
+						</td>
+					</tr>
+				</table>
+			</form>
 		</div>
 
 		<div class="details-container">

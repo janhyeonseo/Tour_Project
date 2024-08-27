@@ -14,4 +14,5 @@ public class EventVO {
 	private String enotion;
 	private String eimage;
 	private String homepage;
+	private String price;
 }

@@ -5,12 +5,17 @@
 	
 	<select id="list" resultType="com.majustory.event.EventVO">
 	 <![CDATA[
-	    select * from event_info
+	    SELECT DISTINCT ename, status, etc, address, detailaddress, eday, 
+	    DBMS_LOB.SUBSTR(enotion, 4000, 1) AS enotion, eimage, homepage, price  
+		FROM event_info
 	  ]]>
 	</select>
 	
 	<select id="Detail" resultType="com.majustory.event.EventVO">
-	    select * from event_info where  ename = #{ename}
+	    SELECT DISTINCT ename, status, etc, address, detailaddress, eday, 
+	    DBMS_LOB.SUBSTR(enotion, 4000, 1) AS enotion, eimage, homepage, price  
+		FROM event_info 
+		where  ename = #{ename}
 	</select>
 
 

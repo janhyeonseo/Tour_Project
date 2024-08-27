@@ -7,15 +7,16 @@
 	
 	table {
 		border-collapse: collapse;
-		width: 600px;
+		width: 650px;
 		margin: 20px auto;
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+		/*box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);*/
 	}
 	
 	th, td {
 		padding: 10px;
 		text-align: center;
-		border: 1px solid #ccc;
+		/*border: 1px solid #ccc;*/
+		border: none;
 	}
 	
 	th {
@@ -61,7 +62,8 @@
 		background-color: rgb(244, 255, 206);
 	}
 	
-	/* 이벤트 페이지 */
+/* 이벤트 페이지 */
+	
 	.event-info-grid {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr); /* 2개의 동일한 너비 컬럼 */
@@ -117,6 +119,25 @@
 	}
 	
 	.etc-text {
+		font-size: 25px;
+		font-weight: bold;
+		color: rgb(53, 53, 53);
+	}
+	
+	.detail-name-text {
+		font-size: 25px;
+		font-weight: bold;
+		color: rgb(53, 53, 53);
+		border-bottom: 1px solid #ccc; /* 구분선 색상과 두께 설정 */
+	}
+	
+	.detail-price-text {
+		font-size: 25px;
+		font-weight: bold;
+		color: rgb(53, 53, 53);
+	}
+	
+	.detail-cart-text {
 		font-size: 25px;
 		font-weight: bold;
 		color: rgb(53, 53, 53);
