@@ -21,7 +21,7 @@ public class EventController {
 		System.out.println("==> eventList ");
 		
 		int start = 0;
-		int pageSize = 5;
+		int pageSize = 3;
 		int pageListSize = 5;
 		
 		int totalCount = service.totalcount(vo);

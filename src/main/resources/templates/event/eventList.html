@@ -17,9 +17,25 @@
 		<div align="center">
 			<h2>행사/이벤트 목록</h2>
 		</div>
+		
+		<form action="/event/eventList">
+			<div class="search-container">
+				<div class="search-bar">
+					<select name=ch1>
+						<option value="ename">행사 이름</option>
+						<option value="etc">특징</option>
+					</select> 
+					<input type=text name=ch2 placeholder="검색어를 입력하세요"> 
+					<input type=submit value="⌕">
+				</div>	
+			</div>	
+		</form>
+		
+		<hr width=650>
+		<h1> 총 [[${totalCount}]] 건</h1>
+		<hr width=650>
+		
 		<div align="center">
-
-
 			<table>
 				<th:block th:each="m, mStat: ${li} ">
 					<tr>
@@ -33,65 +49,44 @@
 					<tr>
 						<td th:text="${m.eday}" />
 					</tr>
-					<tr th:class="${mStat.last} ? '' : 'eventList-line'">
+					<tr th:class="${mStat.last} ? 'eventList-line' : 'eventList-line'">
 						<td th:text="${m.etc}" />
 					</tr>
 				</th:block>
 			</table>
 
-			<form action="/event/eventList">
-				<select name=ch1>
-					<option value="ename">행사 이름</option>
-					<option value="etc">특징</option>
-				</select> <input type=text name=ch2> <input type=submit value="검색하기">
-			</form>
+			
 
-			<a th:href="@{/event/eventList(start=1,ch=${ch1}, ch2=${ch2})}"
-				th:text="처음페이지"></a> &emsp;
+			<ul class="pagination">
+			    <li><a th:href="@{/event/eventList(start=1,ch=${ch1}, ch2=${ch2})}">◀</a></li>
+			
+			    <li th:if="${listStartPage > pageListSize}"
+			        th:with="start=${(listStartPage - pageListSize - 1) * pageSize + 1}">
+			        <a th:href="@{/event/eventList(start=${start},ch=${ch1}, ch2=${ch2})}">◁</a>
+			    </li>
+			
+			    <li th:if="${listStartPage <= pageListSize}"></li>
+			
+			    <th:block th:each="i : ${#numbers.sequence(listStartPage, listEndPage )}">
+			        <li th:with="start=${(i-1) * pageSize + 1}" th:class="${i == currentPage ? 'active' : ''}">
+			            <a th:if="${i <= totalPage}"
+			               th:href="@{/event/eventList(start=${start}, ch1=${ch1} ,ch2=${ch2})}"
+			               th:text="${i}"></a>
+			        </li>
+			    </th:block>
+			
+			    <li th:if="${listEndPage < totalPage}"
+			        th:with="start=${listEndPage * pageSize + 1}">
+			        <a th:href="@{/event/eventList(start=${start},ch=${ch1}, ch2=${ch2})}">▷</a>
+			    </li>
+			
+			    <li th:if="${listEndPage >= totalPage}"></li>
+			
+			    <li th:with="endPage=${lastPage}">
+			        <a th:href="@{/event/eventList(start=${endPage},ch=${ch1}, ch2=${ch2})}">▶</a>
+			    </li>
+			</ul>
 
-			<th:block th:if="${listStartPage > pageListSize}"
-				th:with="start=${(listStartPage - pageListSize - 1) * pageSize + 1}">
-
-				<a
-					th:href="@{/event/eventList(start=${start},ch=${ch1}, ch2=${ch2})}"
-					th:text="이전5페이지"></a>
-				&emsp;
-
-			</th:block>
-
-			<th:block th:if="${listStartPage <= pageListSize}"> 이전5페이지 </th:block>
-			&emsp;
-
-			<th:block
-				th:each="i : ${#numbers.sequence(listStartPage, listEndPage )}">
-				<th:block th:with="start=${(i-1) * pageSize + 1}">
-					<th:block th:if="${ i <= totalPage}">
-						<a
-							th:href="@{/event/eventList(start=${start}, ch1=${ch1} ,ch2=${ch2})}"
-							th:text="[+${i}+]"> </a> &nbsp;
-     </th:block>
-				</th:block>
-			</th:block>
-
-			<th:block th:if="${listEndPage < totalPage}"
-				th:with="start=${listEndPage * pageSize + 1}">
-
-				<a
-					th:href="@{/event/eventList(start=${start},ch=${ch1}, ch2=${ch2})}"
-					th:text="다음5페이지"></a>
-				&emsp;
-
-			</th:block>
-
-			<th:block th:if="${listEndPage >= totalPage}"> 다음5페이지 </th:block>
-			&emsp;
-
-			<th:block th:with="endPage=${lastPage}">
-				<a
-					th:href="@{/event/eventList(start=${endPage},ch=${ch1}, ch2=${ch2})}"
-					th:text="마지막페이지"></a>
-				&emsp;
-			</th:block>
 			&emsp;
 		</div>
 		<br>

@@ -23,11 +23,14 @@
 		background-color: #eefadc;
 		font-weight: bold;
 	}
-	
+	/*
 	tr:hover {
 		background-color: #d6dbce; /* 행에 마우스를 올렸을 때 색상 변경 */
+		
+	*/
+	h1{
+		text-align: left;
 	}
-	
 	input[type=text], input[type=reset], input[type=button],
 		input[type=number], button {
 		padding: 5px;
@@ -62,7 +65,7 @@
 		background-color: rgb(244, 255, 206);
 	}
 	
-/* 이벤트 페이지 */
+/* 이벤트 페이지, 페이징, 검색 */
 	
 	.event-info-grid {
 		display: grid;
@@ -76,14 +79,92 @@
 	.event-info-item {
 		display: flex;
 		align-items: center; /* 수직 중앙 정렬 */
-		justify-content: 10px; /* 요소들 사이에 공간 분배 */
+		justify-content: 5px; /* 요소들 사이에 공간 분배 */
 	}
 	
 	.event-info-label {
-		width: 70px;
+		width: 80px;
 		text-align:left;
 		margin-right: 10px; /* 레이블과 값 사이 간격 설정 */
 	}
+	
+	/*페이징*/
+	.pagination {
+    display: flex;
+    justify-content: center;
+    padding-left: 0;
+    list-style: none;
+    border-radius: 0.25rem;
+	}
+	
+	.pagination li {
+	    display: inline;
+	    margin: 0 5px;
+	}
+	
+	.pagination a {
+	    color: #007bff;
+	    text-decoration: none;
+	    padding: 8px 16px;
+	    border: 1px solid #dee2e6;
+	    border-radius: 0.25rem;
+	}
+	
+	.pagination a:hover {
+	    background-color: #e9ecef;
+	    border-color: #dee2e6;
+	}
+	
+	.pagination .active a {
+	    color: white;
+	    background-color: #007bff;
+	    border-color: #007bff;
+	}
+	
+	.pagination .disabled a {
+	    color: #6c757d;
+	    pointer-events: none;
+	    background-color: #fff;
+	    border-color: #dee2e6;
+	}
+	
+	/*검색*/
+	.search-container {
+	    width: 700px;                /* 컨테이너 너비 */
+	    margin: 0 auto;              /* 페이지 가운데 정렬 */
+	}
+
+	.search-bar {
+	    display: flex;
+	    justify-content: flex-end;   /* 검색 기능들을 오른쪽에 정렬 */
+    	align-items: center;         /* 검색 기능들을 수직 중앙 정렬 */
+	}
+	
+	.search-bar select,
+	.search-bar input[type="text"] {
+	    padding: 10px;
+	    margin-right: 10px;
+	    border: 1px solid #ccc;
+	    border-radius: 4px;
+	    font-size: 16px;
+	}
+	
+	.search-bar input[type="submit"] {
+	    padding: 10px 20px;
+	    background-color: #007bff;
+	    color: white;
+	    border: none;
+	    border-radius: 4px;
+	    cursor: pointer;
+	    font-size: 16px;
+	    transition: background-color 0.3s ease;
+	}
+	
+	.search-bar input[type="submit"]:hover {
+	    background-color: #0056b3;
+	}
+		
+/*이벤트 페이지 끝*/	
 	
 	/* 상세보기 더보기*/
 	.details-container {
