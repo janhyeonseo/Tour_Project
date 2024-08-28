@@ -28,7 +28,7 @@
 		background-color: #d6dbce; /* 행에 마우스를 올렸을 때 색상 변경 */
 	}
 	
-	input[type=text], input[type=submit], input[type=reset], input[type=button],
+	input[type=text], input[type=reset], input[type=button],
 		input[type=number], button {
 		padding: 5px;
 		margin: 5px 0;
@@ -38,14 +38,14 @@
 		text-align: center;
 	}
 	
-	input[type=submit], input[type=reset], input[type=button], button {
+	input[type=reset], input[type=button], button {
 		background-color: #88a65d;
 		color: white;
 		cursor: pointer;
 		padding: 5px 12px;
 	}
 	
-	input[type=submit]:hover, input[type=reset]:hover, input[type=button]:hover
+	input[type=reset]:hover, input[type=button]:hover
 		{
 		background-color: #6b8e23; /* 버튼에 마우스를 올렸을 때 색상을 진하게 변경 */
 	}
@@ -85,61 +85,140 @@
 		margin-right: 10px; /* 레이블과 값 사이 간격 설정 */
 	}
 	
+	/* 상세보기 더보기*/
 	.details-container {
-		text-align: center;
-		margin: 0 auto;
-		max-width: 700px;
-	}
+           text-align: center;
+           margin: 0 auto;
+           max-width: 700px;
+       }
+       
+       .details-container h3 {
+           text-align: left;
+       }
+       
+       .details-container hr {
+           border: 1px solid #ddd;
+           width: 100%;
+           margin: 5px 0 20px 0;
+       }
+       
+       .details-container p {
+           word-wrap: break-word;
+           text-align: left;
+           max-height: 7.5em; /* 5줄 높이에 해당하는 값 (1.5em * 5) */
+           overflow: hidden;
+           text-overflow: ellipsis;
+           line-height: 1.5em;
+           transition: max-height 0.3s ease;
+       }
+
+       .details-container p.expanded {
+           max-height: none; /* 확장 시 높이 제한 해제 */
+       }
+
+       .more-button {
+           display: block;
+           margin-top: 10px;
+           color: blue;
+           cursor: pointer;
+           background: none;
+           border: none;
+           padding: 0;
+           font: inherit;
+           text-align: right;
+       }
+       
+       .text-content {
+            max-height: 7.5em; /* 초기에 표시할 텍스트 높이 (5줄 기준) */
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out;
+        }
+		
+		.text-content.expanded {
+		    max-height: none; /* 전체 텍스트를 보여주기 */
+		}
+        
+        /* 상세보기 더보기 끝*/
+        
+        /* 지도 */
+        
+        .map-style{
+        	margin: auto;  /* 중앙 정렬 */
+        	width:650px; 
+        	height:350px;
+        }
 	
-	.details-container h3 {
-		text-align: left;
-	}
-	
-	.details-container hr {
-		border: 1px solid #ddd;
-		width: 100%;
-		margin: 5px 0 20px 0;
-	}
-	
-	.details-container p {
-		word-wrap: break-word;
-		text-align: left;
-	}
-	
-	.title-text {
-		font-size: 30px;
-		font-weight: bold;
-		color: rgb(53, 53, 53);
-	}
-	
-	.day-text {
-		font-size: 15px;
-		color: rgb(79, 79, 79);
-		margin-bottom: 15px;
-	}
-	
-	.etc-text {
-		font-size: 25px;
-		font-weight: bold;
-		color: rgb(53, 53, 53);
-	}
-	
-	.detail-name-text {
-		font-size: 25px;
-		font-weight: bold;
-		color: rgb(53, 53, 53);
-		border-bottom: 1px solid #ccc; /* 구분선 색상과 두께 설정 */
-	}
-	
-	.detail-price-text {
-		font-size: 25px;
-		font-weight: bold;
-		color: rgb(53, 53, 53);
-	}
-	
-	.detail-cart-text {
-		font-size: 25px;
-		font-weight: bold;
-		color: rgb(53, 53, 53);
-	}
+		/* 지도 끝*/
+		.title-text {
+			font-size: 30px;
+			font-weight: bold;
+			color: rgb(53, 53, 53);
+		}
+		
+		.day-text {
+			font-size: 15px;
+			color: rgb(79, 79, 79);
+			margin-bottom: 15px;
+		}
+		
+		.etc-text {
+			font-size: 25px;
+			font-weight: bold;
+			color: rgb(53, 53, 53);
+		}
+		
+		.detail-name-text {
+			font-size: 25px;
+			font-weight: bold;
+			color: rgb(53, 53, 53);
+			border-bottom: 1px solid #ccc; /* 구분선 색상과 두께 설정 */
+		}
+		
+		.detail-price-text {
+			font-size: 25px;
+			font-weight: bold;
+			color: rgb(218, 12, 1);
+		}
+		
+		.detail-cart-text {
+			font-size: 17px;
+			font-weight: bold;
+			color: rgb(53, 53, 53);
+		}
+		
+		.eventList-line {
+		    border-bottom: 1px solid #ccc; /* 회색 구분선 추가 */
+		}
+		
+		/* 구매, 장바구니 버튼*/
+		.detail-cart-button {
+	    background-color: white;
+	    color: #007bff; /* 파란색 텍스트 */
+	    border: 2px solid #007bff; /* 파란색 테두리 */
+	    padding: 10px 20px;
+	    font-size: 16px;
+	    cursor: pointer;
+	    transition: background-color 0.3s, color 0.3s;
+	    margin-right: 10px;
+		}
+		
+		.detail-cart-button:hover {
+		    background-color: #007bff; /* 배경을 파란색으로 변경 */
+		    color: white; /* 텍스트를 흰색으로 변경 */
+		}
+		
+		.detail-buy-button {
+		    background-color: #007bff; /* 파란색 배경 */
+		    color: white; /* 흰색 텍스트 */
+		    border: none;
+		    padding: 10px 20px;
+		    font-size: 16px;
+		    cursor: pointer;
+		    transition: background-color 0.3s;
+		}
+		
+		.detail-buy-button:hover {
+		    background-color: #0056b3; /* 더 진한 파란색 배경으로 변경 */
+		}
+		
 	

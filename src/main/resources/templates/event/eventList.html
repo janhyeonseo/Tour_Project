@@ -4,7 +4,16 @@
 	<div th:replace="~{include/top}"></div>
 	<section>
 		<br>
-
+		<div>
+			1.페이지 사이즈 : [[${pageSize}]] &emsp;&emsp; 
+			2.페이지 List사이즈(아래숫자갯수) :[[${pageListSize}]]&emsp;&emsp; 
+			3.전체레코드 수 :[[${totalCount}]]&emsp;&emsp; 
+			4.총페이지수 : [[${totalPage}]] <br>
+			5.현재레코드 : [[${start}]]&emsp;&emsp; 
+			6.현재페이지 :[[${currentPage}]]&emsp;&emsp; 
+			7.가로하단 시작 :[[${listStartPage}]]&emsp;&emsp; 
+			8.가로 하단 마지막 : [[${listEndPage}]]
+		</div>
 		<div align="center">
 			<h2>행사/이벤트 목록</h2>
 		</div>
@@ -14,23 +23,76 @@
 			<table>
 				<th:block th:each="m, mStat: ${li} ">
 					<tr>
-						<td rowspan=4>
-						<img th:src="${m.eimage}" width=120 height=150 />
+						<td rowspan=4><img th:src="${m.eimage}" width=120 height=150 />
 						</td>
 					</tr>
 					<tr>
 						<td><a th:href="@{/event/eventDetail(ename=${m.ename})}"
-							 th:text="${m.ename}"></a></td>
+							th:text="${m.ename}"></a></td>
 					</tr>
 					<tr>
 						<td th:text="${m.eday}" />
 					</tr>
-					<tr>
+					<tr th:class="${mStat.last} ? '' : 'eventList-line'">
 						<td th:text="${m.etc}" />
 					</tr>
 				</th:block>
 			</table>
 
+			<form action="/event/eventList">
+				<select name=ch1>
+					<option value="ename">행사 이름</option>
+					<option value="etc">특징</option>
+				</select> <input type=text name=ch2> <input type=submit value="검색하기">
+			</form>
+
+			<a th:href="@{/event/eventList(start=1,ch=${ch1}, ch2=${ch2})}"
+				th:text="처음페이지"></a> &emsp;
+
+			<th:block th:if="${listStartPage > pageListSize}"
+				th:with="start=${(listStartPage - pageListSize - 1) * pageSize + 1}">
+
+				<a
+					th:href="@{/event/eventList(start=${start},ch=${ch1}, ch2=${ch2})}"
+					th:text="이전5페이지"></a>
+				&emsp;
+
+			</th:block>
+
+			<th:block th:if="${listStartPage <= pageListSize}"> 이전5페이지 </th:block>
+			&emsp;
+
+			<th:block
+				th:each="i : ${#numbers.sequence(listStartPage, listEndPage )}">
+				<th:block th:with="start=${(i-1) * pageSize + 1}">
+					<th:block th:if="${ i <= totalPage}">
+						<a
+							th:href="@{/event/eventList(start=${start}, ch1=${ch1} ,ch2=${ch2})}"
+							th:text="[+${i}+]"> </a> &nbsp;
+     </th:block>
+				</th:block>
+			</th:block>
+
+			<th:block th:if="${listEndPage < totalPage}"
+				th:with="start=${listEndPage * pageSize + 1}">
+
+				<a
+					th:href="@{/event/eventList(start=${start},ch=${ch1}, ch2=${ch2})}"
+					th:text="다음5페이지"></a>
+				&emsp;
+
+			</th:block>
+
+			<th:block th:if="${listEndPage >= totalPage}"> 다음5페이지 </th:block>
+			&emsp;
+
+			<th:block th:with="endPage=${lastPage}">
+				<a
+					th:href="@{/event/eventList(start=${endPage},ch=${ch1}, ch2=${ch2})}"
+					th:text="마지막페이지"></a>
+				&emsp;
+			</th:block>
+			&emsp;
 		</div>
 		<br>
 	</section>

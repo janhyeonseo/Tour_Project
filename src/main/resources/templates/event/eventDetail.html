@@ -1,7 +1,37 @@
 <html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Details</title>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=23530ad6da32029988341d7cdc0b9367&libraries=services"></script>
+</head>
 
 <body>
 	<div th:replace="~{include/top}"></div>
+	
+<script>
+   function toggleText(){
+	  
+	   var content = document.getElementById("text-content");
+       var button = document.getElementById("more-button");
+       
+       alert("확인");
+       
+       str = details-container.p("expanded")
+     
+       alert("확인2"+ str);
+       if (content.classList.contains("expanded")) {
+    	   alert("더보기란 확인1");
+           content.classList.remove("expanded");
+           content.style.maxHeight = "7.5em"; // 다시 5줄의 높이로 설정
+           button.textContent = "더보기";
+       } else {
+    	   alert("더보기란 확인2");
+           content.classList.add("expanded");
+           content.style.maxHeight = "none"; // 모든 내용 보이기
+           button.textContent = "접기";
+       }
+   }
+</script>
 
 	<section>
 		<br>
@@ -11,50 +41,61 @@
 		<div align="center" class="day-text">
 			[[${m.address}]] | [[${m.eday}]] 
 		</div>
-		<div align="center" class="etc-text">
-			[[${m.etc}]]
-		</div>
-		<div> </div><div> </div>
+		
 		
 		<div>
 			<hr width=700>
 			<form action="/event/eventcart">
 				<table>
 					<tr>
-						<td rowspan=4 >
-						<img th:src="${m.eimage}" width="200" height="300" />
+						<td rowspan=5 align=center>
+						<img th:src="${m.eimage}" width="200" height="230" />
 						</td>
 					</tr>
 					<tr>
-						<td th:text="${m.ename}" class="detail-name-text"/>
+						<td th:text="${m.ename}" class="detail-name-text" />
 					</tr>
 					<tr>
-						<td th:text="${m.price}" class="detail-price-text"/>
+						<td th:text="${m.etc}" class="detail-etc-text"/>
+					</tr>
+					<tr>
+						<td class="detail-price-text">
+						 [[${m.price}]] 원
+						</td>
 					</tr>
 					<tr>
 						<td>
-						<input type=submit value="장바구니 담기" class="detail-cart-text" />
+						<input type=submit value="장바구니 담기" class="detail-cart-button" />
+						<input type=submit value="바로구매" class="detail-buy-button" />
 						</td>
 					</tr>
 				</table>
 			</form>
+			<hr width=700>
 		</div>
+		<br>
+		
+		
+		<div id="map" class="map-style"></div>
 
+	
 		<div class="details-container">
 			<h3>상세정보</h3>
 			<hr>
 			<p th:text="${m.enotion}"></p>
+			<button id="more-button" class="more-button" onclick="toggleText()">더보기</button>
 			<hr>
 		</div>
+
 
 		<div class="event-info-grid">
 			<div class="event-info-item">
 				<strong class="event-info-label">시작일</strong> 
-				<span>[[${m.eday.substring(0,11)}]]</span>
+				<span>[[${m.eday.substring(0,12)}]]</span>
 			</div>
 			<div class="event-info-item">
 				<strong class="event-info-label">종료일</strong> 
-				<span>[[${m.eday.substring(15,26)}]]</span>
+				<span>[[${m.eday.substring(15)}]]</span>
 			</div>
 			<div class="event-info-item">
 				<strong class="event-info-label">홈페이지</strong> 
@@ -70,5 +111,42 @@
 	</section>
 
 	<div th:replace="~{include/bottom::footer}"></div>
+</body>
+
+	    <script>
+	    document.addEventListener('DOMContentLoaded', function() {
+	        var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	            mapOption = {
+	                center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 초기 중심좌표
+	                level: 5 // 지도의 확대 레벨
+	            };
+	            
+	        var map = new kakao.maps.Map(mapContainer, mapOption); // 지도 생성
+	        
+	        var geocoder = new kakao.maps.services.Geocoder();
+	        // Thymeleaf 변수로 서버에서 주소 가져오기
+	        var address = "[[${m.detailaddress}]]"; // 서버로부터 불러온 상세 주소 사용
+           
+	        geocoder.addressSearch(address, function(result, status) {
+	            // 정상적으로 검색이 완료됐으면 
+	            if (status === kakao.maps.services.Status.OK) {
+	                var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+	                var marker = new kakao.maps.Marker({
+	                    map: map,
+	                    position: coords
+	                });
+	                var infowindow = new kakao.maps.InfoWindow({
+	                    content: '<div style="width:150px;text-align:center;padding:6px 0;">[[${m.detailaddress}]]</div>'
+	                });
+	                infowindow.open(map, marker);
+	                // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+	                map.setCenter(coords);
+	            } else {
+	                console.error("Geocode was not successful for the following reason: " + status);
+	            }
+	        });
+	    });
+
+    </script>
 </body>
 </html>

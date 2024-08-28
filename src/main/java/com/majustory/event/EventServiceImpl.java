@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class EventServiceImpl implements EventService{
+public class EventServiceImpl implements EventService {
 	
 	@Autowired
 	private EventDao  dao;
@@ -26,5 +26,11 @@ public class EventServiceImpl implements EventService{
 	public EventVO Detail(EventVO vo) {
 		// TODO Auto-generated method stub
 		return dao.Detail(vo);
+	}
+
+	@Override
+	public int totalcount(EventVO vo) {
+		// TODO Auto-generated method stub
+		return dao.totalcount(vo);
 	}
 }

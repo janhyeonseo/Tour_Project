@@ -15,4 +15,15 @@ public class EventVO {
 	private String eimage;
 	private String homepage;
 	private String price;
+	
+	
+	private int rownum;
+	private int rnum;
+	
+	private int pageSize;
+	private int start;
+	private int end;
+	
+	private String ch1;
+	private String ch2;
 }
