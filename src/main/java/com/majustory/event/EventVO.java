@@ -26,4 +26,5 @@ public class EventVO {
 	
 	private String ch1;
 	private String ch2;
+	
 }

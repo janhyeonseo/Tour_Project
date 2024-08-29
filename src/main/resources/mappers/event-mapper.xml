@@ -9,7 +9,7 @@
 		( select rownum as rnum , P.*
 		from
 		(SELECT
-		DISTINCT ename, status, etc, address, detailaddress, eday,
+		DISTINCT id, ename, status, etc, address, detailaddress, eday,
 		DBMS_LOB.SUBSTR(enotion, 4000, 1) AS enotion, eimage, homepage, price
 		FROM event_info ) P
 		where 1=1
@@ -28,7 +28,7 @@
 	</select>
 
 	<select id="Detail" resultType="com.majustory.event.EventVO">
-		SELECT DISTINCT ename, status,
+		SELECT DISTINCT id, ename, status,
 		etc, address, detailaddress, eday,
 		DBMS_LOB.SUBSTR(enotion, 4000, 1) AS
 		enotion, eimage, homepage, price
@@ -42,6 +42,12 @@
 		DISTINCT ename)
 		FROM event_info
 	</select>
+	
+	
+	<insert id="cartInsert" >
+		insert into cart(cid, id, ename, eprice, eimage, amount)
+		values(cidseq.nextval, #{id},#{ename},#{eprice},#{eimage},#{amount})
+	</insert>
 
 
 </mapper>

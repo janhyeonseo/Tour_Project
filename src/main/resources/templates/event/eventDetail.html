@@ -20,7 +20,11 @@
 		
 		<div>
 			<hr width=700>
-			<form action="/event/eventcart">
+			<form action="/event/cartInsert">
+			<input type=text name=id th:value="${m.id}" />
+			<input type=text name=eimage th:value="${m.eimage}" />
+			<input type=text name=ename th:value="${m.ename}" />
+			<input type=text name=price th:value="${m.price}" />
 				<table>
 					<tr>
 						<td rowspan=5 align=center>
@@ -28,7 +32,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td th:text="${m.ename}" class="detail-name-text" />
+						<td th:text="${m.ename}"  class="detail-name-text" />
 					</tr>
 					<tr>
 						<td th:text="${m.etc}" class="detail-etc-text"/>
@@ -46,7 +50,7 @@
 								<option value=3>3</option>
 						</select>
 						<input type=submit value="장바구니 담기" class="detail-cart-button" />
-						<input type=submit value="바로구매" class="detail-buy-button" />
+						<!-- <input type=submit value="바로구매" class="detail-buy-button" /> -->
 						</td>
 					</tr>
 				</table>
