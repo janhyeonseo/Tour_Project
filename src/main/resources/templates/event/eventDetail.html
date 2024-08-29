@@ -7,31 +7,6 @@
 
 <body>
 	<div th:replace="~{include/top}"></div>
-	
-<script>
-   function toggleText(){
-	  
-	   var content = document.getElementById("text-content");
-       var button = document.getElementById("more-button");
-       
-       alert("확인");
-       
-       str = details-container.p("expanded")
-     
-       alert("확인2"+ str);
-       if (content.classList.contains("expanded")) {
-    	   alert("더보기란 확인1");
-           content.classList.remove("expanded");
-           content.style.maxHeight = "7.5em"; // 다시 5줄의 높이로 설정
-           button.textContent = "더보기";
-       } else {
-    	   alert("더보기란 확인2");
-           content.classList.add("expanded");
-           content.style.maxHeight = "none"; // 모든 내용 보이기
-           button.textContent = "접기";
-       }
-   }
-</script>
 
 	<section>
 		<br>
@@ -65,6 +40,11 @@
 					</tr>
 					<tr>
 						<td>
+						<select name=amount class="select-style">
+								<option value=1>1</option>
+								<option value=2>2</option>
+								<option value=3>3</option>
+						</select>
 						<input type=submit value="장바구니 담기" class="detail-cart-button" />
 						<input type=submit value="바로구매" class="detail-buy-button" />
 						</td>
@@ -83,7 +63,6 @@
 			<h3>상세정보</h3>
 			<hr>
 			<p th:text="${m.enotion}"></p>
-			<button id="more-button" class="more-button" onclick="toggleText()">더보기</button>
 			<hr>
 		</div>
 

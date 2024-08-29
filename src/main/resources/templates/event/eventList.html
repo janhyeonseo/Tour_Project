@@ -18,40 +18,43 @@
 			<h2>행사/이벤트 목록</h2>
 		</div>
 		
-		<form action="/event/eventList">
-			<div class="search-container">
-				<div class="search-bar">
-					<select name=ch1>
-						<option value="ename">행사 이름</option>
-						<option value="etc">특징</option>
-					</select> 
-					<input type=text name=ch2 placeholder="검색어를 입력하세요"> 
-					<input type=submit value="검색⌕">
-				</div>	
-			</div>	
-		</form>
+		<div class="header-container">
+		    <h1># 총 <span class="total-count">[[${totalCount}]]</span> 건</h1>
+		    <form action="/event/eventList" class="search-form">
+		        <div class="search-container">
+		            <div class="search-bar">
+		                <select name="ch1">
+		                    <option value="ename">행사 이름</option>
+		                    <option value="etc">특징</option>
+		                </select> 
+		                <input type="text" name="ch2" placeholder="검색어를 입력하세요"> 
+		                <input type="submit" value="검색⌕">
+		            </div>  
+		        </div>
+		    </form>
+		</div>
+
 		
 		<hr width=650>
-		<h1> 총 [[${totalCount}]] 건</h1>
-		<hr width=650>
+
 		
 		<div align="center">
 			<table>
 				<th:block th:each="m, mStat: ${li} ">
 					<tr>
-						<td rowspan=4><img th:src="${m.eimage}" width=120 height=150 />
+						<td rowspan=2 width=160 height=150 align=center><img th:src="${m.eimage}" width=100 height=120 />
 						</td>
 					</tr>
-					<tr>
-						<td><a th:href="@{/event/eventDetail(ename=${m.ename})}"
-							th:text="${m.ename}"></a></td>
-					</tr>
-					<tr>
-						<td th:text="${m.eday}" />
-					</tr>
 					<tr th:class="${mStat.last} ? 'eventList-line' : 'eventList-line'">
-						<td th:text="${m.etc}" />
+						<td><h1 class="event-name">
+							<a th:href="@{/event/eventDetail(ename=${m.ename})}"th:text="${m.ename}"></a>
+							</h1>
+							<br>
+							<div class="event-dates" th:text="${m.eday}"></div>
+                    		<div class="event-dates" th:text="${m.etc}"></div>
+						</td>
 					</tr>
+					
 				</th:block>
 			</table>
 
