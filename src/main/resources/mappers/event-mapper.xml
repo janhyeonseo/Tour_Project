@@ -48,6 +48,11 @@
 		insert into cart(cid, id, ename, eprice, eimage, amount)
 		values(cidseq.nextval, #{id},#{ename},#{eprice},#{eimage},#{amount})
 	</insert>
+	
+	<select id="cartlist"
+		 resultType="com.majustory.event.EventVO">
+		SELECT * from cart
+	</select>
 
 
 </mapper>

@@ -27,4 +27,9 @@ public class EventVO {
 	private String ch1;
 	private String ch2;
 	
+	
+	private int cid;
+	private int oid;
+	private int eprice;
+	private int amount;
 }

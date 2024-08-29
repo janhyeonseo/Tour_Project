@@ -35,8 +35,14 @@ public class EventServiceImpl implements EventService {
 	}
 
 	@Override
-	public void cartInsert(CartVO vo) {
+	public void cartInsert(EventVO vo) {
 		// TODO Auto-generated method stub
 		dao.cartInsert(vo);
+	}
+
+	@Override
+	public List<EventVO> cartlist(EventVO vo) {
+		// TODO Auto-generated method stub
+		return dao.cartlist(vo);
 	}
 }

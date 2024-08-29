@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.majustory.event.CartVO;
 import com.majustory.event.EventService;
 import com.majustory.event.EventVO;
 
@@ -89,10 +88,18 @@ public class EventController {
 	}
 	
 	@GetMapping("/cartInsert")
-	String cartInsert(Model model, CartVO vo) {
+	String cartInsert(Model model, EventVO vo) {
 		System.out.println("==> cartInsert ");
 		service.cartInsert(vo);
 		return "redirect:/event/eventList";
+
+	}
+	
+	@GetMapping("/cartlist")
+	String cartlist(Model model, EventVO vo) {
+		System.out.println("==> cartlist ");
+		model.addAttribute("li", service.cartlist(vo));
+		return "event/cartList";
 
 	}
 }

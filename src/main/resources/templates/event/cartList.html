@@ -1,0 +1,27 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<div th:replace="~{include/top}"></div>
+	<section>
+		<table>
+			<th:block th:each="m, mStat: ${li} ">
+				<tr>
+					<td rowspan=2 width=160 height=150 align=center><img
+						th:src="${m.eimage}" width=100 height=120 /></td>
+				</tr>
+				<tr th:class="${mStat.last} ? 'eventList-line' : 'eventList-line'">
+					<td><h1 class="event-name">
+							<a th:href="@{/event/eventDetail(ename=${m.ename})}"
+								th:text="${m.ename}"></a>
+						</h1> <br>
+						<div class="event-dates" th:text="${m.eday}"></div>
+						<div class="event-dates" th:text="${m.etc}"></div></td>
+				</tr>
+
+			</th:block>
+		</table>
+	</section>
+
+	<div th:replace="~{include/bottom::footer}"></div>
+</body>
+</html>
