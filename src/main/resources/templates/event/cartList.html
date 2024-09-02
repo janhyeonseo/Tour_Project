@@ -12,7 +12,6 @@
 
 		function delK() {
 			alert("전체삭제")
-			cid = f1.cid.value
 			f1.action = "/event/cartDel2"
 		}
 	</script>
@@ -32,7 +31,7 @@
 					</th:block>
 					<th:block th:if="${li.size() >= 1}">
 					<tr th:each="m, mStat: ${li} " 
-						th:class="${mStat.last} ? 'eventList-line' : 'eventList-line'">
+						th:class="${mStat.last} ? '' : 'eventList-line'">
 
 						<td align = center> 
 							<img th:src="${m.eimage}" width=80 height=100  /></td>

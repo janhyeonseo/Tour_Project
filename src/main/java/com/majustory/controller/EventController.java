@@ -122,8 +122,8 @@ public class EventController {
 	}
 	
 	@GetMapping("/cartDel2")
-	String cartDel2( String [] cid , Model  model ){
-		 System.out.println("==> cartDel2 " + cid.length);
+	String cartDel2( Model  model ){
+		 System.out.println("==> cartDel2 ");
 		 service.cartDel2(null);
 		 model.addAttribute("li", service.cartlist(null));
 		 return "/event/cartList";
