@@ -14,7 +14,7 @@ public class EventVO {
 	private String enotion;
 	private String eimage;
 	private String homepage;
-	private String price;
+	private int price;
 	
 	
 	private int rownum;
@@ -28,7 +28,7 @@ public class EventVO {
 	private String ch2;
 	
 	
-	private int cid;
+	private String cid;
 	private int oid;
 	private int eprice;
 	private int amount;

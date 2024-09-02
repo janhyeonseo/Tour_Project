@@ -366,5 +366,15 @@
 		    color: white; /* 호버 시 텍스트 색상 변경 */
 		}
 
-				
+/*장바구니*/	
+		/* 리스트 안의 목록*/
+		.cart-name {
+		    font-size: 15px; /* 글꼴 크기 */
+		    margin-bottom: 0px; /* 이름 아래의 마진 */
+		}
+		
+		.cart-name a {
+		    text-decoration: none; /* 링크 밑줄 제거 */
+		    color: #333; /* 링크 색상 */
+		}			
 	

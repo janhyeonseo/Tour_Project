@@ -2,26 +2,67 @@
 
 <body>
 	<div th:replace="~{include/top}"></div>
+	
+	<h2> 장바구니 목록 보기</h2>
+	<script type="text/javascript" th:inline="javascript">
+		function delOne(cid) {
+			alert("cid:" + cid)
+			location.href = "/event/cartDel?cid=" + cid
+		}
+
+		function delK() {
+			alert("전체삭제")
+			cid = f1.cid.value
+			f1.action = "/event/cartDel2"
+		}
+	</script>
+	
 	<section>
-		<table>
-			<th:block th:each="m, mStat: ${li} ">
-				<tr>
-					<td rowspan=2 width=160 height=150 align=center><img
-						th:src="${m.eimage}" width=100 height=120 /></td>
-				</tr>
-				<tr th:class="${mStat.last} ? 'eventList-line' : 'eventList-line'">
-					<td><h1 class="event-name">
+		<form name=f1>
+				<table width=650>
+					<tr align="center">
+						<td>상품이미지</td>
+						<td>수량</td>
+						<td>취소</td>
+					</tr>
+					<th:block th:if="${li.size() < 1}">
+					<tr align="center">
+						<td colspan="3" >구매한 물건이 없습니다!</td>
+					</tr>
+					</th:block>
+					<th:block th:if="${li.size() >= 1}">
+					<tr th:each="m, mStat: ${li} " 
+						th:class="${mStat.last} ? 'eventList-line' : 'eventList-line'">
+
+						<td align = center> 
+							<img th:src="${m.eimage}" width=80 height=100  /></td>
+						<td class="cart-name">
+							<div>
 							<a th:href="@{/event/eventDetail(ename=${m.ename})}"
 								th:text="${m.ename}"></a>
-						</h1> <br>
-						<div class="event-dates" th:text="${m.eday}"></div>
-						<div class="event-dates" th:text="${m.etc}"></div></td>
-				</tr>
-
-			</th:block>
-		</table>
+							</div>
+						    <div th:text="'상품가격 : '+ ${m.price}"></div>
+							<div th:text="'상품수량 : '+ ${m.amount}"> </div>
+						</td>
+						<td align = center><input type="button" value="취소"
+							th:onClick="delOne([[${m.cid}]])"></td>
+					</tr>
+					</th:block>
+				</table>
+				
+				<th:block th:if="${li.size() >= 1}">
+				<div class="kg_pay_btn" th:data-name="마주스토리" th:data-price="${total}"
+					 th:data-goodsnum="${mm}">
+						<input type=hidden id=datepicker value="2024-08-02">
+						<button type="button" th:onclick="kg_request_pay()">결제하기</button>&emsp; 
+						<input type=submit value="전체삭제" onClick="delK()" /> &emsp; 
+						결제금액 : <input type=text th:value=" ${total}" />
+				</div>		
+				</th:block>
+			</form>
 	</section>
 
 	<div th:replace="~{include/bottom::footer}"></div>
 </body>
 </html>
+

@@ -1,5 +1,7 @@
 package com.majustory.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -98,8 +100,32 @@ public class EventController {
 	@GetMapping("/cartlist")
 	String cartlist(Model model, EventVO vo) {
 		System.out.println("==> cartlist ");
+		List<EventVO> li = service.cartlist(vo);
+		
+		int total = 0;
+		 for(EventVO m : li) {
+			 total = total + m.getAmount()*m.getPrice();
+		 }
+		model.addAttribute("total", total);
 		model.addAttribute("li", service.cartlist(vo));
 		return "event/cartList";
 
+	}
+	
+	@GetMapping("/cartDel")
+	String cartDel( EventVO vo , Model  model ){
+		 System.out.println("==> cartDel ");
+		 service.cartDel(vo);
+		 model.addAttribute("li", service.cartlist(null));
+		return "/event/cartList";
+		 
+	}
+	
+	@GetMapping("/cartDel2")
+	String cartDel2( String [] cid , Model  model ){
+		 System.out.println("==> cartDel2 " + cid.length);
+		 service.cartDel2(null);
+		 model.addAttribute("li", service.cartlist(null));
+		 return "/event/cartList";
 	}
 }

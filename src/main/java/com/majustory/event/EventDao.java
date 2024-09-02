@@ -12,5 +12,9 @@ public interface EventDao {
 	int totalcount(EventVO vo);
 	
 	public  void cartInsert(EventVO vo);
+	
+	public  void cartDel(EventVO vo);
+	public  void cartDel2(EventVO vo);
+	
 	public  List<EventVO> cartlist(EventVO vo);
 }

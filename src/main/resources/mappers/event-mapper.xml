@@ -45,14 +45,22 @@
 	
 	
 	<insert id="cartInsert" >
-		insert into cart(cid, id, ename, eprice, eimage, amount)
-		values(cidseq.nextval, #{id},#{ename},#{eprice},#{eimage},#{amount})
+		insert into cart(cid, id, ename, price, eimage, amount)
+		values(cidseq.nextval, #{id},#{ename},#{price},#{eimage},#{amount})
 	</insert>
 	
 	<select id="cartlist"
 		 resultType="com.majustory.event.EventVO">
 		SELECT * from cart
 	</select>
+	
+	<delete id="cartDel">
+		delete from cart where cid = #{cid}
+	</delete>
+	
+	<delete id="cartDel2">
+		delete from cart
+	</delete>
 
 
 </mapper>
