@@ -15,4 +15,10 @@ public class LoginServiceImpl implements LoginService{
 		return dao.loginUser(vo);
 	}
 
+	@Override
+	public void memberInsert(LoginVO vo) {
+		// TODO Auto-generated method stub
+		dao.memberInsert(vo);
+	}
+
 }
