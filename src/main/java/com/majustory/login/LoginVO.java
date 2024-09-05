@@ -9,8 +9,8 @@ public class LoginVO {
 	private String password;
 	private String role;
 	private String name;
-	private int phone;
-	private int age;
+	private String phone;
+	private String age;
 	private String gender;
 	private String addr1;
 	private String addr2;

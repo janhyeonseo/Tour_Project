@@ -24,12 +24,13 @@ public class MemberController {
 	
 	@GetMapping("/member")
 	private void member(Model model){
-		model.addAttribute("Hello","시작페이지");
 	}
 	
 	@PostMapping("/memberOK")
-	private void memberOK(Model model, LoginVO vo){
+	private String memberOK(Model model, LoginVO vo){
+		System.out.println("==> memberOK");
 		service.memberInsert(vo);
+		return "/index";
 	}
 	
 	
