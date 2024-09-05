@@ -65,6 +65,79 @@
 
 		</div>
 	</section>
+	
+	<script th:inline="javascript">
+		jQuery.ajaxSetup({
+			cache : false
+		});
+
+		function kg_request_pay() {
+			//전달할 데이터 4가지는 필수 값
+			// data-name(상품이름): 3개월무료사용 , data-price(가격): 100  , data-goodsnum(주문번호) : "70001" 
+			var selectedDate = document.getElementById("datepicker").value;
+			var selectedGoodsName = document.querySelector(".kg_pay_btn")
+					.getAttribute("data-name");
+			var selectedGoodsPrice = document.querySelector(".kg_pay_btn")
+					.getAttribute("data-price");
+			var selectedGoodsNum = document.querySelector(".kg_pay_btn")
+					.getAttribute("data-goodsnum");
+
+			//kg이니시스 결제 API
+			var IMP = window.IMP; // 생략가능
+			IMP.init('imp33165546'); // 가맹점 식별코드
+
+			// IMP.request_pay(param, callback) 결제창 호출
+			IMP.request_pay({
+				pg : "html5_inicis",
+				pay_method : "card",
+				merchant_uid : "gpay_" + new Date().getTime(), // 주문번호
+				name : "마주스토리" + " " + selectedGoodsName, // 상품이름
+				amount : selectedGoodsPrice, // 상품가격 (숫자 타입)
+				buyer_email : "6963jj@naver.com",
+				buyer_name : "jang hyeon seo",
+				buyer_tel : "01038516963"
+			}, function(rsp) { // callback
+				console.log(rsp);
+				if (rsp.success) { //결제 성공시
+					var msg = '결제가 완료되었습니다.';
+					var result = {
+						"mpaynum" : rsp.merchant_uid, //결제번호
+						"membernum" : "AA00001", //회원번호
+						"mpaymethod" : rsp.pay_method, //결제수단
+						"mpayproduct" : rsp.name, //헬스장 이름 + 상품이름
+						"mpayprice" : rsp.paid_amount, // 결제금액
+						"mpaydate" : new Date().toISOString().slice(0, 10), //결제일
+						"mpaygym" : "마주스토리", //헬스장 이름
+						"mpayperiod" : selectedDate, //상품이용기간
+						"mpaytime" : "",
+						"trainername" : "",
+						"ggoodsnum" : selectedGoodsNum, //상품번호
+						"tgoodsint" : null,
+						"gymnum" : "B0001" //헬스장 고유번호
+					}
+					console.log(result);
+
+					$.ajax({
+						url : '/PortOneT/insertMPay',
+						type : 'POST',
+						contentType : 'application/json',
+						data : JSON.stringify(result),
+						success : function(res) {
+							console.log(res);
+							location.href = res;
+						},
+						error : function(err) {
+							console.log(err);
+						}
+					}); //ajax
+				} else {
+					var msg = '결제 실패';
+					msg += '\n에러내용 : ' + rsp.error_msg;
+				}
+				alert(msg);
+			});
+		}
+	</script>
 
 
 	<div th:replace="~{include/bottom::footer}"></div>
