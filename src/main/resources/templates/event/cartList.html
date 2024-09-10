@@ -1,4 +1,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
+<script  src="http://code.jquery.com/jquery-1.10.2.js" ></script>
+<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 
 <body>
 	<div th:replace="~{include/top}"></div>
@@ -18,7 +20,7 @@
 	
 	<section>
 		<form name=f1>
-				<table width=650>
+				<table>
 					<tr align="center">
 						<td>상품이미지</td>
 						<td>수량</td>
@@ -55,7 +57,7 @@
 						<input type=hidden id=datepicker value="2024-08-02">
 						<button type="button" th:onclick="kg_request_pay()">결제하기</button>&emsp; 
 						<input type=submit value="전체삭제" onClick="delK()" /> &emsp; 
-						결제금액 : <input type=text th:value=" ${total}" />
+						결제금액 : <input type=text th:value="${total}" />
 				</div>		
 				</th:block>
 			</form>
@@ -66,6 +68,8 @@
 		});
 
 		function kg_request_pay() {
+			alert("확인!!")
+			
 			//전달할 데이터 4가지는 필수 값
 			// data-name(상품이름): 3개월무료사용 , data-price(가격): 100  , data-goodsnum(주문번호) : "70001" 
 			var selectedDate = document.getElementById("datepicker").value;
@@ -87,9 +91,9 @@
 				merchant_uid : "gpay_" + new Date().getTime(), // 주문번호
 				name : "마주스토리" + " " + selectedGoodsName, // 상품이름
 				amount : selectedGoodsPrice, // 상품가격 (숫자 타입)
-				buyer_email : "kk0063@naver.com",
-				buyer_name : "choi young won",
-				buyer_tel : "01050376133"
+				buyer_email : "liom0987@gamil.com",
+				buyer_name : "Jang HyeonSeo",
+				buyer_tel : "01038516963"
 			}, function(rsp) { // callback
 				console.log(rsp);
 				if (rsp.success) { //결제 성공시
