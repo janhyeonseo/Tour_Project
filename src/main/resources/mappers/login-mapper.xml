@@ -13,5 +13,10 @@
 		values(oid_seq.nextval, #{username}, #{password}, #{role}, #{name}, 
 		 		#{phone}, #{age}, #{gender}, #{addr1}, #{addr2}, #{addr3})
 	</insert>
+	
+	<select id="loginUser" resultType="com.majustory.login.LoginVO">
+		select *
+		from member where username = #{username}
+	</select>
 
 </mapper>
