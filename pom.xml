@@ -77,6 +77,31 @@
 			<version>3.0.3</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.rubypaper</groupId>
+			<artifactId>restfulAPI2</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+		<!-- security 설정 -->
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-springsecurity6</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		
+		
 	</dependencies>
 
 	<build>

@@ -3,10 +3,6 @@
 <mapper namespace="com.majustory.login.LoginDao">
 
 	
-	<select id="loginUser" resultType="com.majustory.login.LoginVO">
-	
-	</select>
-	
 	<insert id ="memberInsert">
 		INSERT INTO member
 		(oid, username, password, role, name, phone, age, gender, addr1, addr2, addr3) 
