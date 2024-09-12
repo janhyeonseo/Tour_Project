@@ -6,7 +6,7 @@
 	    insert into InsertMpay (mid, Mpayprice, Mpaynum) 
 		values (mid.nextval, #{Mpayprice},#{Mpaynum})
 	</insert>
-
+	
 
 
 </mapper>

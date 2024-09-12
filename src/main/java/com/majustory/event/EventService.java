@@ -13,4 +13,6 @@ public interface EventService {
 	public  void cartDel2(EventVO vo);
 	
 	public  List<EventVO> cartlist(EventVO vo);
+	
+	
 }

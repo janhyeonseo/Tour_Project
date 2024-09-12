@@ -33,5 +33,7 @@ public class MemberController {
 		return "/index";
 	}
 	
-	
+	@GetMapping("/memberedit")
+	private void memberedit(Model model){
+	}
 }

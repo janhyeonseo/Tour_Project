@@ -29,14 +29,14 @@ public class SecurityConfig {
 		// 3. "/product/**" 는 인증받은 모든 사람이 접근
 
 		http.authorizeHttpRequests(authorize -> authorize	              
-	              .requestMatchers("/admin/**").hasRole("ADMIN")
-	              .requestMatchers("/member/**").authenticated()
+	              .requestMatchers("/event/**").hasRole("ADMIN")
+	              .requestMatchers("/login/**").authenticated()
 	              .anyRequest().permitAll())
 				
 		.csrf(csrf ->csrf.disable())	
 	    
-		.formLogin(login ->login.loginPage("/login/login").defaultSuccessUrl("/login/loginSuccess", true))
-		.exceptionHandling(handling ->handling.accessDeniedPage("/login/accessDenied"))
+		.formLogin(login ->login.loginPage("/loginT/loginform").defaultSuccessUrl("/loginT/success", true))
+		.exceptionHandling(handling ->handling.accessDeniedPage("/loginT/accessDenied"))
 		.logout(logout ->logout.invalidateHttpSession(true).logoutSuccessUrl("/"))
 		.userDetailsService(securityUserDetail);
 		return http.build(); 

@@ -12,7 +12,7 @@ import com.majustory.login.LoginVO;
 
 import jakarta.servlet.http.HttpSession;
 
-@RequestMapping("/login")
+@RequestMapping("/loginT")
 @Controller
 public class LoginController {
 	
@@ -23,10 +23,8 @@ public class LoginController {
 		System.out.println("==> LoginController 생성자");
 	}
 	
-	@GetMapping("/loginform")
-	private void member(){
-	}
 	
+	/*
 	@PostMapping("/loginOK")
 	private String loginOK(Model model, LoginVO vo) {
 		System.out.println("===> loginOK 매핑확인 " + vo.getUsername() + ":" + vo.getPassword());
@@ -48,7 +46,18 @@ public class LoginController {
 			return "redirect:/login/fail";
 		}
 	}
+ */
+	
+	
+	@GetMapping("/loginform")
+	private String loginform() {
+		System.out.println("===> loginform 매핑확인 ");
 
+		return "login/loginform.html";
+	}
+
+	
+	
 	@GetMapping("/logout")
 	private String logout(Model model, HttpSession session) {
 		System.out.println("===> logout 매핑확인 ");

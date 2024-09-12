@@ -1,11 +1,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
-<script  src="http://code.jquery.com/jquery-1.10.2.js" ></script>
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 
 <body>
 	<div th:replace="~{include/top}"></div>
-	
-	<h2> 장바구니 목록 보기</h2>
+
+	<h2>장바구니 목록 보기</h2>
 	<script type="text/javascript" th:inline="javascript">
 		function delOne(cid) {
 			alert("cid:" + cid)
@@ -17,10 +17,10 @@
 			f1.action = "/event/cartDel2"
 		}
 	</script>
-	
+
 	<section>
-		<form name=f1>
-				<table>
+		 <form name=f1>
+				<table width = 650>
 					<tr align="center">
 						<td>상품이미지</td>
 						<td>수량</td>
@@ -45,8 +45,11 @@
 						    <div th:text="'상품가격 : '+ ${m.price}"></div>
 							<div th:text="'상품수량 : '+ ${m.amount}"> </div>
 						</td>
-						<td align = center><input type="button" value="취소"
-							th:onClick="delOne([[${m.cid}]])"></td>
+						<td align = center>
+							<div class="cart-onedelete">
+								<input type="button" value="취소" th:onClick="delOne([[${m.cid}]])">
+							</div>
+						</td>
 					</tr>
 					</th:block>
 				</table>
@@ -69,7 +72,7 @@
 
 		function kg_request_pay() {
 			alert("확인!!")
-			
+
 			//전달할 데이터 4가지는 필수 값
 			// data-name(상품이름): 3개월무료사용 , data-price(가격): 100  , data-goodsnum(주문번호) : "70001" 
 			var selectedDate = document.getElementById("datepicker").value;

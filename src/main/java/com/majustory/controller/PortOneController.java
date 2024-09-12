@@ -41,14 +41,14 @@ public class PortOneController {
 	String result(Model  model){
 		   System.out.println("==> result ");
 		   model.addAttribute("result","hello");
-		return "/product/result";	
+		return "/event/result";	
 	}
 	
 	@GetMapping("/fail")
 	String fail(Model  model){
 		   System.out.println("==> result ");
 		   model.addAttribute("result","fail");
-		return "/product/fail";	
+		return "/event/fail";	
 	}
 }
 

@@ -17,4 +17,6 @@ public interface EventDao {
 	public  void cartDel2(EventVO vo);
 	
 	public  List<EventVO> cartlist(EventVO vo);
+	
+	
 }

@@ -15,4 +15,5 @@ public class InsertMpayServiceImpl implements InsertMpayService{
 		
 	}
 
+
 }
