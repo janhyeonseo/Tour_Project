@@ -85,4 +85,11 @@ public class LoginController {
 		
 		return "login/accessDenied.html"; 		 				
 	}
+	
+	@GetMapping("/logOut")
+	String logOut(Model  model,  HttpSession  session){
+		   System.out.println("==> logOut ");
+		   session.invalidate() ;
+		return "redirect:/login/loginForm";
+	}
 }
